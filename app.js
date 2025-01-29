@@ -1,9 +1,8 @@
+//Variables
 let numeroSecreto = 0;
 let intentos = 0;
 let listaNumerosSorteados = [];
 let numeroMaximo = 10;
-
-
 
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
@@ -11,6 +10,7 @@ function asignarTextoElemento(elemento, texto) {
     return;
 }
 
+//Se realiza la comparación
 function verificarIntento() {
     let numeroDeUsuario = parseInt(document.getElementById('valorUsuario').value);
     
@@ -25,6 +25,9 @@ function verificarIntento() {
             asignarTextoElemento('p','El número secreto es mayor');
         }
         intentos++;
+        if (intentos > 3){
+            asignarTextoElemento('p',`Llegaste al número máximo de intentos`);
+        }
         limpiarCaja();
     }
     return;
@@ -39,6 +42,7 @@ function generarNumeroSecreto() {
 
     console.log(numeroGenerado);
     console.log(listaNumerosSorteados);
+
     //Si ya sorteamos todos los números
     if (listaNumerosSorteados.length == numeroMaximo) {
         asignarTextoElemento('p','Ya se sortearon todos los números posibles');
@@ -58,7 +62,7 @@ function condicionesIniciales() {
     asignarTextoElemento('p',`Indica un número del 1 al ${numeroMaximo}`);
     numeroSecreto = generarNumeroSecreto();
     intentos = 1;
-    console.log(numeroSecreto);
+    // console.log(numeroSecreto);
 }
 
 function reiniciarJuego() {
